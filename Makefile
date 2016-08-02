@@ -51,7 +51,7 @@ clean:
 .PHONY: publish
 publish:
 	[ -d public ] || git clone git@github.com:pkgix/pkgix.github.io.git public
-	rsync -av --delete --exclude .git build/html/ public/
+	rsync -av --delete --exclude .git --exclude .nojekyll build/html/ public/
 
 .PHONY: html
 html:
