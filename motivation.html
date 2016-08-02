@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Motivation &mdash; pkgix  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="pkgix  documentation" href="index.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pkgix
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Motivation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#related-software">Related Software</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">pkgix</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Motivation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/motivation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<p>The primary motivation behind pkgix was a restricted environment (no root
+access, e.g. compute cluster) without specific software dependencies.
+Furthermore, the dependencies should be the same across a variety of machines
+(e.g. local workstation). In particular:</p>
+<ul class="simple">
+<li>require specific version of software, with many dependencies;</li>
+<li>restricted permissions;</li>
+<li>little storage space available;</li>
+<li>the now common language-specific package managers do not help;</li>
+<li>this has to happen on several machines.</li>
+</ul>
+<p>Typically, one resorts to many instances of <code class="docutils literal"><span class="pre">./configure</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span>
+<span class="pre">install</span></code> (or equivalent for whatever software we need); the next best thing is
+a collection of scripts to automate this. Now add upgrading this collection of
+software and at some point we may just give up. The solution seemed obvious: of
+course we need a package manager.</p>
+<p>Although package management appears to be a solved problem, none of the
+existing solutions seem to address all of the issues that initially sparked
+creation of pkgix.  The goal was to require as few dependencies as possible,
+i.e. BASH and a minimal set of external tools&#8212;in addition, the package
+manager should:</p>
+<ul class="simple">
+<li>be able to install in an arbitrary prefix (no root!).</li>
+<li>resolve dependencies automatically;</li>
+<li>if, however, a dependency is already installed on the target system it will
+mark it as satisfied;</li>
+<li>provide the ability to upgrade, uninstall, and do general maintenance on a
+prefix;</li>
+<li>combine prefixes.</li>
+</ul>
+<div class="section" id="related-software">
+<h2>Related Software<a class="headerlink" href="#related-software" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Homebrew/linuxbrew">LinuxBrew</a>: Port of Homebrew to
+Linux.</li>
+<li><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Prefix">Gentoo Prefix</a>: Port of
+Gentoo packages to work with arbitrary prefixes.</li>
+<li><a class="reference external" href="http://nixos.org">NixOS</a>: Unfortunately requires root access once.</li>
+</ul>
+<p>The main issue with the above is that they pull a large number of dependencies
+that are usually already available on the user&#8217;s system. One of the main goals
+of pkgix is to reuse as many dependencies already present on the user&#8217;s
+system&#8212;to do this, several features were added to make this simpler (mainly
+metapackages which can dynamically resolve to either another package or say
+they are satisfied).</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
