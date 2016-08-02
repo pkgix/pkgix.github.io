@@ -9,7 +9,7 @@ Package description files can be located inside repositories accessible via
 multiple URLs. The following protocols are supported: ``file://`` (default),
 ``http://``, ``https://``, ``ftp://``.
 
-Written in BASH making use of standard POSIX tools.
+Written in BASH using standard POSIX utilities.
 
 Setup
 -----
@@ -32,13 +32,17 @@ See the Repositories section below for list of known repositories.
 Example Usage
 -------------
 
+Common use-cases involve building software where many dependencies are involved
+when working in an environment without root access. The below is only to
+illustrate the most basic usage.
+
 .. code-block:: sh
 
-    # Install gcc 4.4 and make 3.80 into 'old-build-tools' from repository.
-    $ pkgix install old-build-tools dev/gcc-4.4 dev/make-3.80
+    # Install gcc 4.4 and make 3.80 into 'legacy-build-tools' from repository.
+    $ pkgix install legacy-build-tools dev/gcc-4.4 dev/make-3.80
 
     # Starts a new shell in the chosen prefix environment.
-    $ pkgix chenv old-build-tools
+    $ pkgix chenv legacy-build-tools
 
     # Add a remote repository. Additional URLs are processed in
     # order, until the requested package description file is found.

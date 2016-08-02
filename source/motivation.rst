@@ -14,9 +14,9 @@ Furthermore, the dependencies should be the same across a variety of machines
 
 Typically, one resorts to many instances of ``./configure && make && make
 install`` (or equivalent for whatever software we need); the next best thing is
-a collection of scripts to automate this. Now add upgrading this collection of
-software and at some point we may just give up. The solution seemed obvious: of
-course we need a package manager.
+a collection of scripts to automate this.  Now consider the problem of keeping
+this collection of software up-to-date and we might as well give up. The
+solution we really want is a package manager.
 
 Although package management appears to be a solved problem, none of the
 existing solutions seem to address all of the issues that initially sparked
@@ -39,11 +39,11 @@ Related Software
   Linux.
 * `Gentoo Prefix <https://wiki.gentoo.org/wiki/Project:Prefix>`_: Port of
   Gentoo packages to work with arbitrary prefixes.
-* `NixOS <http://nixos.org>`_: Unfortunately requires root access once.
+* `NixOS <http://nixos.org>`_: Unfortunately requires root access to set up.
 
 The main issue with the above is that they pull a large number of dependencies
-that are usually already available on the user's system. One of the main goals
-of pkgix is to reuse as many dependencies already present on the user's
-system---to do this, several features were added to make this simpler (mainly
-metapackages which can dynamically resolve to either another package or say
-they are satisfied).
+that are usually already available on the user's system, yet still install them
+needlessly (using up unnecessary space). One of the main goals of pkgix is to
+reuse as many dependencies already present on the user's system---to do this,
+several features were added to make this simpler (metapackages which
+dynamically resolve to either another package or say they are satisfied).
