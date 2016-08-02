@@ -141,9 +141,9 @@ Furthermore, the dependencies should be the same across a variety of machines
 </ul>
 <p>Typically, one resorts to many instances of <code class="docutils literal"><span class="pre">./configure</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span>
 <span class="pre">install</span></code> (or equivalent for whatever software we need); the next best thing is
-a collection of scripts to automate this. Now add upgrading this collection of
-software and at some point we may just give up. The solution seemed obvious: of
-course we need a package manager.</p>
+a collection of scripts to automate this.  Now consider the problem of keeping
+this collection of software up-to-date and we might as well give up. The
+solution we really want is a package manager.</p>
 <p>Although package management appears to be a solved problem, none of the
 existing solutions seem to address all of the issues that initially sparked
 creation of pkgix.  The goal was to require as few dependencies as possible,
@@ -165,14 +165,14 @@ prefix;</li>
 Linux.</li>
 <li><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Prefix">Gentoo Prefix</a>: Port of
 Gentoo packages to work with arbitrary prefixes.</li>
-<li><a class="reference external" href="http://nixos.org">NixOS</a>: Unfortunately requires root access once.</li>
+<li><a class="reference external" href="http://nixos.org">NixOS</a>: Unfortunately requires root access to set up.</li>
 </ul>
 <p>The main issue with the above is that they pull a large number of dependencies
-that are usually already available on the user&#8217;s system. One of the main goals
-of pkgix is to reuse as many dependencies already present on the user&#8217;s
-system&#8212;to do this, several features were added to make this simpler (mainly
-metapackages which can dynamically resolve to either another package or say
-they are satisfied).</p>
+that are usually already available on the user&#8217;s system, yet still install them
+needlessly (using up unnecessary space). One of the main goals of pkgix is to
+reuse as many dependencies already present on the user&#8217;s system&#8212;to do this,
+several features were added to make this simpler (metapackages which
+dynamically resolve to either another package or say they are satisfied).</p>
 </div>
 </div>
 

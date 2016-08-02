@@ -137,7 +137,7 @@ system-wide is not desirable.</p>
 <p>Package description files can be located inside repositories accessible via
 multiple URLs. The following protocols are supported: <code class="docutils literal"><span class="pre">file://</span></code> (default),
 <code class="docutils literal"><span class="pre">http://</span></code>, <code class="docutils literal"><span class="pre">https://</span></code>, <code class="docutils literal"><span class="pre">ftp://</span></code>.</p>
-<p>Written in BASH making use of standard POSIX tools.</p>
+<p>Written in BASH using standard POSIX utilities.</p>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <p>At minimum, you only need to obtain the script file <a class="reference external" href="https://raw.githubusercontent.com/pkgix/pkgix/master/bin/pkgix">pkgix</a>.</p>
@@ -155,11 +155,14 @@ shell prompt to indicate active prefix environment.</li>
 </div>
 <div class="section" id="example-usage">
 <h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># Install gcc 4.4 and make 3.80 into &#39;old-build-tools&#39; from repository.</span>
-$ pkgix install old-build-tools dev/gcc-4.4 dev/make-3.80
+<p>Common use-cases involve building software where many dependencies are involved
+when working in an environment without root access. The below is only to
+illustrate the most basic usage.</p>
+<div class="highlight-sh"><div class="highlight"><pre><span></span><span class="c1"># Install gcc 4.4 and make 3.80 into &#39;legacy-build-tools&#39; from repository.</span>
+$ pkgix install legacy-build-tools dev/gcc-4.4 dev/make-3.80
 
 <span class="c1"># Starts a new shell in the chosen prefix environment.</span>
-$ pkgix chenv old-build-tools
+$ pkgix chenv legacy-build-tools
 
 <span class="c1"># Add a remote repository. Additional URLs are processed in</span>
 <span class="c1"># order, until the requested package description file is found.</span>
